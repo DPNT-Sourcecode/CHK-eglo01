@@ -25,3 +25,6 @@ class TestCheckout():
         assert checkout("a") == -1
         assert checkout("abcd") == -1
         assert checkout("ABCd") == -1
+
+    def test_buy_get_free(self):
+        assert checkout("EEB") == 80
