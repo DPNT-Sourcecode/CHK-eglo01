@@ -17,7 +17,7 @@ def checkout(skus):
         "H": 10, 
         "I": 35, 
         "J": 60, 
-        "K": 80, 
+        "K": 70, 
         "L": 90,
         "M": 15, 
         "N": 40, 
@@ -25,14 +25,14 @@ def checkout(skus):
         "P": 50, 
         "Q": 30, 
         "R": 50, 
-        "S": 30, 
+        "S": 20, 
         "T": 20, 
         "U": 40, 
         "V": 50, 
         "W": 20, 
-        "X": 90, 
-        "Y": 10, 
-        "Z": 50
+        "X": 17, 
+        "Y": 20, 
+        "Z": 21
         }
     quants = {
                 "A": 0, 
@@ -104,7 +104,7 @@ def checkout(skus):
     def take_most_expensive_from_group(quants, units, group_quants, group_prices):
         sorted_prices = dict(sorted(group_prices.items(), key=lambda key_val: key_val[1]))
         while units > 0:
-            for member in sorted_prices.keys():                
+            for member in sorted_prices.keys().__reversed__():                
                 if group_quants[member] > 0:
                     if group_quants[member] > units:
                         group_quants[member] -= units
@@ -154,7 +154,6 @@ def checkout(skus):
             quants[sku] = 0
         quants[sku] += 1
     offer_total, remaining = handle_offers(quants, offers)
-    print(offer_total, remaining)
     total += offer_total
     for sku in remaining:
         total += remaining[sku] * prices[sku]
