@@ -26,11 +26,9 @@ def checkout(skus):
         # handle offers in order of priority (init order)
         offer_total = 0
         for offer in offers:
-            print(offer)
             # deal with x for y offer
             if offer["type"] == "x_for_y":
-                while quants[offer["sku"]] > offer["quantity"]:
-                    print("dealing with offer")
+                while quants[offer["sku"]] >= offer["quantity"]:
                     offer_total += offer["offer_price"]
                     quants[offer["sku"]] -= offer["quantity"]
             # deal with buy x get y free offer

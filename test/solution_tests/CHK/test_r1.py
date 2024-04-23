@@ -28,3 +28,5 @@ class TestCheckout():
 
     def test_buy_get_free(self):
         assert checkout("EEB") == 80
+        assert checkout("EEEB") == 120
+        assert checkout("EEEEBB") == 160
