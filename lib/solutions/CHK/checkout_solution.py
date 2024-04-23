@@ -6,7 +6,36 @@ def checkout(skus):
     if type(skus) != str: return -1
 
     # define prices and offers
-    prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10}
+    prices = {
+        "A": 50, 
+        "B": 30, 
+        "C": 20, 
+        "D": 15, 
+        "E": 40, 
+        "F": 10, 
+        "G": 20, 
+        "H": 10, 
+        "I": 35, 
+        "J": 60, 
+        "K": 80, 
+        "L": 90,
+        "M": 15, 
+        "N": 40, 
+        "O": 10, 
+        "P": 50, 
+        "Q": 30, 
+        "R": 50, 
+        "S": 30, 
+        "T": 20, 
+        "U": 40, 
+        "V": 50, 
+        "W": 20, 
+        "X": 90, 
+        "Y": 10, 
+        "Z": 50
+        }
+    # will init keys of quants based on prices - no need for 2 copies now
+    quants = {}
     offers = [
         {"type": "x_for_y", "quantity": 5, "sku": "A", "offer_price": 200},
         {"type": "x_for_y", "quantity": 3, "sku": "A", "offer_price": 130},
@@ -36,7 +65,6 @@ def checkout(skus):
 
     # init result price
     total = 0
-    quants = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "F": 0}
 
     # deal with stream of skus
     for sku in skus:
@@ -44,6 +72,8 @@ def checkout(skus):
             return -1
         if sku.islower():
             return -1
+        if sku not in quants.keys():
+            quants[sku] = 0
         quants[sku] += 1
     offer_total, remaining = handle_offers(quants, offers)
     total += offer_total
@@ -51,3 +81,4 @@ def checkout(skus):
         total += remaining[sku] * prices[sku]
 
     return total
+
