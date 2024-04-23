@@ -4,7 +4,7 @@
 # skus = unicode string
 def checkout(skus):
     if type(skus) != str: return -1
-    
+
     # define prices and offers
     prices = {"a": 50, "b": 30, "c": 20, "d": 15}
     x_for_y = {"a": {"units": 3, "price": 130}, "b": {"units": 2, "price": 45}}
@@ -28,6 +28,6 @@ def checkout(skus):
         else:
             total += sku * prices[sku]
     for sku in deals.keys():
-        total += x_for_y_calculator(deals[sku], x_for_y[sku].units, x_for_y[sku].price, prices[sku])
+        total += x_for_y_calculator(deals[sku], x_for_y[sku]["units"], x_for_y[sku]["price"], prices[sku])
     
     return total
