@@ -75,7 +75,7 @@ def checkout(skus):
         {"type": "x_for_y", "quantity": 5, "sku": "P", "offer_price": 200},
         {"type": "buy_get_free", "quantity": 3, "buy_sku":"R", "get_sku":"Q", "get_quantity": 1},
         {"type": "x_for_y", "quantity": 3, "sku": "Q", "offer_price": 80},
-        {"type": "x_for_y", "quantity": 3, "sku": "U", "offer_price": 120},
+        {"type": "x_for_y", "quantity": 4, "sku": "U", "offer_price": 120},
         {"type": "x_for_y", "quantity": 3, "sku": "V", "offer_price": 130},
         {"type": "x_for_y", "quantity": 2, "sku": "V", "offer_price": 90},
 
