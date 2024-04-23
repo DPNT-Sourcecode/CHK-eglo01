@@ -84,6 +84,7 @@ def checkout(skus):
     def can_take_group_discount(quants, group_members, units):
         group_units = 0
         for member in group_members:
+            print(quants, group_members, member)
             group_units += quants[member]
             if group_units >= units:
                 return True
@@ -104,7 +105,7 @@ def checkout(skus):
     def take_most_expensive_from_group(quants, units, group_quants, group_prices):
         sorted_prices = dict(sorted(group_prices.items(), key=lambda key_val: key_val[1]))
         while units > 0:
-            for member in sorted_prices.keys():
+            for member in sorted_prices.keys():                
                 if group_quants[member] > 0:
                     if group_quants[member] > units:
                         group_quants[member] -= units
