@@ -6,8 +6,9 @@ def checkout(skus):
     if type(skus) != str: return -1
 
     # define prices and offers
-    prices = {"A": 50, "B": 30, "C": 20, "D": 15}
-    x_for_y = {"A": {"units": 3, "price": 130}, "B": {"units": 2, "price": 45}}
+    prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
+    x_for_y = {"A": {"units": [5, 3], "price": [150, 130]}, "B": {"units": 2, "price": 45}}
+    get_free = {"E": {"required": 2, "type":"B", "quantity": 1 }}
 
     # handle offer logic
     def x_for_y_calculator(actual_units: int, offer_units: int, offer_price: int, regular_price: int):
