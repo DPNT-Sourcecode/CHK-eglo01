@@ -41,8 +41,18 @@ def checkout(skus):
         {"type": "x_for_y", "quantity": 3, "sku": "A", "offer_price": 130},
         {"type": "buy_get_free", "quantity": 2, "buy_sku":"E", "get_sku":"B", "get_quantity": 1},
         {"type": "x_for_y", "quantity": 2, "sku": "B", "offer_price": 45},
-        # we consider this new rule essentially a 3 for 2 rule, as all same type
         {"type": "x_for_y", "quantity": 3, "sku": "F", "offer_price": 20},
+        {"type": "x_for_y", "quantity": 10, "sku": "H", "offer_price": 80},
+        {"type": "x_for_y", "quantity": 5, "sku": "H", "offer_price": 45},
+        {"type": "x_for_y", "quantity": 2, "sku": "K", "offer_price": 150},
+        {"type": "buy_get_free", "quantity": 3, "buy_sku":"N", "get_sku":"M", "get_quantity": 1},
+        {"type": "x_for_y", "quantity": 5, "sku": "P", "offer_price": 200},
+        {"type": "buy_get_free", "quantity": 3, "buy_sku":"R", "get_sku":"Q", "get_quantity": 1},
+        {"type": "x_for_y", "quantity": 3, "sku": "Q", "offer_price": 80},
+        {"type": "x_for_y", "quantity": 3, "sku": "U", "offer_price": 120},
+        {"type": "x_for_y", "quantity": 3, "sku": "V", "offer_price": 130},
+        {"type": "x_for_y", "quantity": 2, "sku": "V", "offer_price": 90},
+
 ]
     
     def handle_offers(quants, offers):
