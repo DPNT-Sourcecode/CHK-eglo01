@@ -34,8 +34,34 @@ def checkout(skus):
         "Y": 10, 
         "Z": 50
         }
-    # will init keys of quants based on prices - no need for 2 copies now
-    quants = {}
+    quants = {
+                "A": 0, 
+        "B": 0, 
+        "C": 0, 
+        "D": 0, 
+        "E": 0, 
+        "F": 0, 
+        "G": 0, 
+        "H": 0, 
+        "I": 0, 
+        "J": 0, 
+        "K": 0, 
+        "L": 0,
+        "M": 0, 
+        "N": 0, 
+        "O": 0, 
+        "P": 0, 
+        "Q": 0, 
+        "R": 0, 
+        "S": 0, 
+        "T": 0, 
+        "U": 0, 
+        "V": 0, 
+        "W": 0, 
+        "X": 0, 
+        "Y": 0, 
+        "Z": 0
+    }
     offers = [
         {"type": "x_for_y", "quantity": 5, "sku": "A", "offer_price": 200},
         {"type": "x_for_y", "quantity": 3, "sku": "A", "offer_price": 130},
@@ -91,4 +117,3 @@ def checkout(skus):
         total += remaining[sku] * prices[sku]
 
     return total
-
