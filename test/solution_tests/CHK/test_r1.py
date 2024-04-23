@@ -30,3 +30,6 @@ class TestCheckout():
         assert checkout("EEB") == 80
         assert checkout("EEEB") == 120
         assert checkout("EEEEBB") == 160
+
+    def test_is_kinder(self):
+        assert checkout("BBBB") == 90

@@ -11,6 +11,7 @@ def checkout(skus):
         {"type": "x_for_y", "quantity": 5, "sku": "A", "offer_price": 200},
         {"type": "x_for_y", "quantity": 3, "sku": "A", "offer_price": 130},
         {"type": "buy_get_free", "quantity": 2, "buy_sku":"E", "get_sku":"B", "get_quantity": 1}      
+        ,{"type": "x_for_y", "quantity": 2, "sku": "B", "offer_price": 45},
               ]
 
     # handle offer logic
