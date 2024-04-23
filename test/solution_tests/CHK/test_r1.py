@@ -34,3 +34,6 @@ class TestCheckout():
     def test_is_kinder(self):
         assert checkout("BBBB") == 90
         assert checkout("QQQRRR") == 210
+
+    def test_group_discount(self):
+        assert checkout("SSS") == 45

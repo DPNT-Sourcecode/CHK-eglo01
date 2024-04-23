@@ -78,9 +78,43 @@ def checkout(skus):
         {"type": "x_for_y", "quantity": 4, "sku": "U", "offer_price": 120},
         {"type": "x_for_y", "quantity": 3, "sku": "V", "offer_price": 130},
         {"type": "x_for_y", "quantity": 2, "sku": "V", "offer_price": 90},
-
+        {"type": "group_discount", "group": ["S", "T", "X", "Y", "Z"], "units": 3, "price": 45}
 ]
     
+    def can_take_group_discount(quants, group_members, units):
+        group_units = 0
+        for member in group_members:
+            group_units += quants[member]
+            if group_units >= units:
+                return True
+        return group_units >= units
+
+    def get_group_quants(quants, group_members):
+        group_quants = {}
+        for group_member in group_members:
+            group_quants[group_member] = quants[group_member]
+        return group_quants
+    
+    def get_group_prices(prices, group_members):
+        group_prices = {}
+        for group_member in group_members:
+            group_prices[group_member] = prices[group_member]
+        return group_prices
+
+    def take_most_expensive_from_group(quants, units, group_quants, group_prices):
+        sorted_prices = dict(sorted(group_prices.items(), key=lambda key_val: key_val[1]))
+        while units > 0:
+            for member in sorted_prices.keys():
+                if group_quants[member] > 0:
+                    if group_quants[member] > units:
+                        group_quants[member] -= units
+                        quants[member] -= units
+                        units = 0                        
+                    else:
+                        units -= group_quants[member]
+                        group_quants[member] = 0
+                        quants[member] = 0
+
     def handle_offers(quants, offers):
         # handle offers in order of priority (init order)
         offer_total = 0
@@ -97,6 +131,13 @@ def checkout(skus):
                     quants[offer["get_sku"]] = 0
                 else:
                     quants[offer["get_sku"]] -= max_free
+            elif offer["type"] == "group_discount":
+                while can_take_group_discount(quants, offer["group"], offer["units"]):
+                    group_quants = get_group_quants(quants, offer["group"])
+                    group_prices = get_group_prices(prices, offer["group"])
+                    quants = take_most_expensive_from_group(quants, offer["units"], group_quants, group_prices)
+                    offer_total += offer["price"]
+
         return offer_total, quants
 
     # init result price
