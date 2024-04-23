@@ -3,9 +3,7 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    if type(skus) == list: return -1
     if type(skus) != str: return -1
-    skus = skus.lower()
 
     # define prices and offers
     prices = {"a": 50, "b": 30, "c": 20, "d": 15}
@@ -28,6 +26,8 @@ def checkout(skus):
     for sku in skus:
         if sku not in prices.keys():
             return -1
+        if sku == sku.lower():
+            return -1
         if sku in x_for_y.keys():
             deals[sku] += 1
         else:
@@ -36,3 +36,4 @@ def checkout(skus):
         total += x_for_y_calculator(deals[sku], x_for_y[sku]["units"], x_for_y[sku]["price"], prices[sku])
     
     return total
+
