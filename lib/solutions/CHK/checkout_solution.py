@@ -26,14 +26,16 @@ def checkout(skus):
         # handle offers in order of priority (init order)
         offer_total = 0
         for offer in offers:
+            print(offer)
             # deal with x for y offer
             if offer["type"] == "x_for_y":
                 while quants[offer["sku"]] > offer["quantity"]:
+                    print("dealing with offer")
                     offer_total += offer["offer_price"]
                     quants[offer["sku"]] -= offer["quantity"]
             # deal with buy x get y free offer
             elif offer["type"] == "buy_get_free":
-                max_free = (quants[offer["buy_sku"]] % offer["quantity"]) * offer["get_quantity"]
+                max_free = (quants[offer["buy_sku"]] // offer["quantity"]) * offer["get_quantity"]
                 if max_free > quants[offer["get_sku"]]:
                     quants[offer["get_sku"]] = 0
                 else:
@@ -52,9 +54,8 @@ def checkout(skus):
             return -1
         quants[sku] += 1
     offer_total, remaining = handle_offers(quants, offers)
-    print(offer_total, remaining)
     total += offer_total
     for sku in remaining:
-        total += prices[sku]
+        total += remaining[sku] * prices[sku]
 
     return total
