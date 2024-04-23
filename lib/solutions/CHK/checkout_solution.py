@@ -6,8 +6,8 @@ def checkout(skus):
     if type(skus) != str: return -1
 
     # define prices and offers
-    prices = {"a": 50, "b": 30, "c": 20, "d": 15}
-    x_for_y = {"a": {"units": 3, "price": 130}, "b": {"units": 2, "price": 45}}
+    prices = {"A": 50, "B": 30, "C": 20, "D": 15}
+    x_for_y = {"A": {"units": 3, "price": 130}, "B": {"units": 2, "price": 45}}
 
     # handle offer logic
     def x_for_y_calculator(actual_units: int, offer_units: int, offer_price: int, regular_price: int):
@@ -20,7 +20,7 @@ def checkout(skus):
 
     # init result price
     total = 0
-    deals = {"a": 0, "b": 0}
+    deals = {"A": 0, "B": 0}
 
     # deal with stream of skus
     for sku in skus:
@@ -36,4 +36,3 @@ def checkout(skus):
         total += x_for_y_calculator(deals[sku], x_for_y[sku]["units"], x_for_y[sku]["price"], prices[sku])
     
     return total
-
