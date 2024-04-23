@@ -37,3 +37,4 @@ class TestCheckout():
 
     def test_group_discount(self):
         assert checkout("SSS") == 45
+        assert checkout("SSSZ") == 65

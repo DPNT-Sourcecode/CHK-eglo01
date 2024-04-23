@@ -84,7 +84,6 @@ def checkout(skus):
     def can_take_group_discount(quants, group_members, units):
         group_units = 0
         for member in group_members:
-            print(quants, group_members, member)
             group_units += quants[member]
             if group_units >= units:
                 return True
@@ -115,6 +114,7 @@ def checkout(skus):
                         units -= group_quants[member]
                         group_quants[member] = 0
                         quants[member] = 0
+        return quants
 
     def handle_offers(quants, offers):
         # handle offers in order of priority (init order)
@@ -154,6 +154,7 @@ def checkout(skus):
             quants[sku] = 0
         quants[sku] += 1
     offer_total, remaining = handle_offers(quants, offers)
+    print(offer_total, remaining)
     total += offer_total
     for sku in remaining:
         total += remaining[sku] * prices[sku]
