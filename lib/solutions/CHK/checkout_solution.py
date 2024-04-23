@@ -6,22 +6,15 @@ def checkout(skus):
     if type(skus) != str: return -1
 
     # define prices and offers
-    prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
+    prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10}
     offers = [
         {"type": "x_for_y", "quantity": 5, "sku": "A", "offer_price": 200},
         {"type": "x_for_y", "quantity": 3, "sku": "A", "offer_price": 130},
-        {"type": "buy_get_free", "quantity": 2, "buy_sku":"E", "get_sku":"B", "get_quantity": 1}      
-        ,{"type": "x_for_y", "quantity": 2, "sku": "B", "offer_price": 45},
-              ]
-
-    # handle offer logic
-    def x_for_y_calculator(actual_units: int, offer_units: list, offer_price: list, regular_price: int):
-        subtotal = 0
-        while actual_units >= offer_units.min():
-            actual_units -= offer_units
-            subtotal += offer_price
-        subtotal += (actual_units * regular_price)
-        return subtotal
+        {"type": "buy_get_free", "quantity": 2, "buy_sku":"E", "get_sku":"B", "get_quantity": 1},
+        {"type": "x_for_y", "quantity": 2, "sku": "B", "offer_price": 45},
+        # we consider this new rule essentially a 3 for 2 rule, as all same type
+        {"type": "x_for_y", "quantity": 3, "sku": "F", "offer_price": 20},
+]
     
     def handle_offers(quants, offers):
         # handle offers in order of priority (init order)
@@ -43,7 +36,7 @@ def checkout(skus):
 
     # init result price
     total = 0
-    quants = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0}
+    quants = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "F": 0}
 
     # deal with stream of skus
     for sku in skus:
