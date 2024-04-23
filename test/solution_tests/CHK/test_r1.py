@@ -20,3 +20,6 @@ class TestCheckout():
 
     def test_symbol(self):
         assert checkout("-ab") == -1
+
+    def test_single_arr(self):
+        assert checkout(["a"]) == 50

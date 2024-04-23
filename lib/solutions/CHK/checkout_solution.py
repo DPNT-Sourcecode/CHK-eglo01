@@ -3,6 +3,8 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    if type(skus) == list and len(skus) == 1 and type(skus[0]) == str:
+        skus = skus[0]
     if type(skus) != str: return -1
     skus = skus.lower()
 
