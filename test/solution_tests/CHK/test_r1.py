@@ -17,3 +17,6 @@ class TestCheckout():
 
     def test_sale_under_offer(self):
         assert checkout("aa") == 100
+
+    def test_symbol(self):
+        assert checkout("-ab") == -1

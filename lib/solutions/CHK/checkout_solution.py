@@ -25,6 +25,8 @@ def checkout(skus):
 
     # deal with stream of skus
     for sku in skus:
+        if sku not in prices.keys():
+            return -1
         if sku in x_for_y.keys():
             deals[sku] += 1
         else:
