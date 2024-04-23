@@ -14,3 +14,6 @@ class TestCheckout():
 
     def test_sale(self):
         assert checkout("aaa") == 130
+
+    def test_sale_under_offer(self):
+        assert checkout("aa") == 100

@@ -27,8 +27,9 @@ def checkout(skus):
         if sku in x_for_y.keys():
             deals[sku] += 1
         else:
-            total += sku * prices[sku]
+            total += prices[sku]
     for sku in deals.keys():
+        print(deals[sku], x_for_y[sku]["units"], x_for_y[sku]["price"], prices[sku])
         total += x_for_y_calculator(deals[sku], x_for_y[sku]["units"], x_for_y[sku]["price"], prices[sku])
     
     return total
