@@ -70,7 +70,7 @@ def checkout(skus):
         {"type": "x_for_y", "quantity": 3, "sku": "F", "offer_price": 20},
         {"type": "x_for_y", "quantity": 10, "sku": "H", "offer_price": 80},
         {"type": "x_for_y", "quantity": 5, "sku": "H", "offer_price": 45},
-        {"type": "x_for_y", "quantity": 2, "sku": "K", "offer_price": 150},
+        {"type": "x_for_y", "quantity": 2, "sku": "K", "offer_price": 120},
         {"type": "buy_get_free", "quantity": 3, "buy_sku":"N", "get_sku":"M", "get_quantity": 1},
         {"type": "x_for_y", "quantity": 5, "sku": "P", "offer_price": 200},
         {"type": "buy_get_free", "quantity": 3, "buy_sku":"R", "get_sku":"Q", "get_quantity": 1},
@@ -159,3 +159,4 @@ def checkout(skus):
         total += remaining[sku] * prices[sku]
 
     return total
+
