@@ -26,7 +26,7 @@ def checkout(skus):
     for sku in skus:
         if sku not in prices.keys():
             return -1
-        if sku == sku.lower():
+        if sku.islower():
             return -1
         if sku in x_for_y.keys():
             deals[sku] += 1

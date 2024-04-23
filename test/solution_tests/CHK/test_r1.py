@@ -9,17 +9,19 @@ class TestCheckout():
         assert checkout("") == 0
 
     def test_non_sale(self):
-        assert checkout("ddd") == 45
-        assert checkout("cd") == 35
+        assert checkout("DDD") == 45
+        assert checkout("CD") == 35
 
     def test_sale(self):
-        assert checkout("aaa") == 130
+        assert checkout("AAA") == 130
 
     def test_sale_under_offer(self):
-        assert checkout("aa") == 100
+        assert checkout("AA") == 100
 
     def test_symbol(self):
-        assert checkout("-ab") == -1
+        assert checkout("-AB") == -1
 
-    def test_single_arr(self):
-        assert checkout(["a"]) == -1
+    def test_lower(self):
+        assert checkout("a") == -1
+        assert checkout("abcd") == -1
+        assert checkout("ABCd") == -1
