@@ -1,4 +1,4 @@
-from solutions.CHK import checkout_solution
+from solutions.CHK.checkout_solution import checkout
 
 class TestCheckout():
     def test_invalid(self):

@@ -16,6 +16,7 @@ def checkout(skus):
             actual_units - offer_units
             subtotal += offer_price
         subtotal += (actual_units * regular_price)
+        return subtotal
 
     # init result price
     total = 0
